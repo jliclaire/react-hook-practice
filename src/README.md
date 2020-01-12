@@ -5,6 +5,8 @@
 - only use in functional components or inside other custom React Hooks
 - must use on the root level of the function component, cannot be nested it in another function or in an if statement
 
+<img src="/docs/understanding-useState.JPG"/>
+
 ## useState
 
 - `useState` can take any state (type of data), not just object. class components only take object.
