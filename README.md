@@ -7,7 +7,7 @@
 
 <img src="/docs/understanding-useState.JPG"/>
 
-## useState
+## useState()
 
 - `useState` can take any state (type of data), not just object. class components only take object.
 - `useSate` returns
@@ -29,3 +29,11 @@ instead of
 ## array destructing
 
 - pull element out of an array and store them in separate variables
+
+## useEffect()
+
+use to manage side-effects. A http request is a side-effec. Anything that cannot be managed in the normal component rendering flow. by default, `useEffect` is executed AFTER EVERY component render cycle, acts like `componentDidUpdate()` (warning of entering into an infinite loop)
+
+if pass a second argument to `useEffect()`, it will act like `componentDidMount()` if passed an empty array []. otherwise the array is the for the dependencies outside the `useEffect()` function, such as variables and method defined outside which means only when the dependencies has changed, useEffect() will run.
+
+`useEffect(() => { doSomething()}, []);`
