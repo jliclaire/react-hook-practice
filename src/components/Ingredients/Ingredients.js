@@ -8,10 +8,21 @@ const Ingredients = () => {
   const [userIngredients, setUserIngredients] = useState([]);
 
   const addIngredientsHandler = ingredient => {
-    setUserIngredients(prevIngredients => [
-      ...prevIngredients,
-      { id: Math.floor(Math.random() * 1000).toString(), ...ingredient } // ...ingredient take all the current data of the ingredient object
-    ]);
+    fetch("https://react-hook-db869.firebaseio.com/ingredients.json", {
+      method: "POST",
+      body: JSON.stringify(ingredient),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(responseData => {
+        setUserIngredients(prevIngredients => [
+          ...prevIngredients,
+          // { id: Math.floor(Math.random() * 1000).toString(), ...ingredient } // ...ingredient take all the current data of the ingredient object
+          { id: responseData.name, ...ingredient }
+        ]);
+      });
   };
 
   const removeIngredientHandler = ingredientId => {
